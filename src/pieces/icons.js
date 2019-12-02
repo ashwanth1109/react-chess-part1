@@ -7,38 +7,22 @@ import {
   faChessPawn
 } from "@fortawesome/free-solid-svg-icons";
 
-export const king = {
-  symbol: faChessKing,
-  name: "king"
-};
-export const queen = {
-  symbol: faChessQueen,
-  name: "queen"
-};
-export const rook = {
-  symbol: faChessRook,
-  name: "rook"
-};
-export const bishop = {
-  symbol: faChessBishop,
-  name: "bishop"
-};
-export const knight = {
-  symbol: faChessKnight,
-  name: "knight"
-};
-export const pawn = {
-  symbol: faChessPawn,
-  name: "pawn"
+export const pieces = {
+  king: faChessKing,
+  queen: faChessQueen,
+  bishop: faChessBishop,
+  knight: faChessKnight,
+  rook: faChessRook,
+  pawn: faChessPawn
 };
 
 export const specialRow = [
-  rook,
-  knight,
-  bishop,
-  queen,
-  king,
-  bishop,
-  knight,
-  rook
+  "rook",
+  "knight",
+  "bishop",
+  "queen",
+  "king",
+  "bishop",
+  "knight",
+  "rook"
 ];

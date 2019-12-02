@@ -1,44 +1,46 @@
-import { faCheckSquare, faCoffee } from "@fortawesome/free-solid-svg-icons";
-
 import Square from "./Square";
 import Piece from "./Piece";
-import { specialRow, pawn } from "../pieces/icons";
+import { specialRow, pieces } from "../pieces/icons";
 
 class Game {
   constructor() {
     this.board = [];
     // create the board
+    this.createBoard();
+    this.setPiecesToInitialPosition();
+  }
+
+  createBoard() {
     for (let i = 0; i < 8; i++) {
       let row = [];
       for (let j = 0; j < 8; j++) row.push(new Square(i + 1, j + 1));
       this.board.push(row);
     }
-
-    this.setPiecesToInitialPosition();
   }
 
-  setPieceToSquare(pieceObj, player, square) {
-    const piece = new Piece(pieceObj, player, square);
-    square.attachPiece(piece);
+  setPieceToSquare(symbol, player, square) {
+    square.attachPiece(new Piece(symbol, player));
   }
 
   setSpecialAndPawn(player, piece, position) {
     const [row, next] = player === 1 ? [0, 1] : [7, 6];
     // set special piece
-    this.setPieceToSquare(piece, player, this.board[row][position]);
+    this.setPieceToSquare(
+      pieces[`${piece}`],
+      player,
+      this.board[row][position]
+    );
     // set pawn in front of special piece
-    this.setPieceToSquare(pawn, player, this.board[next][position]);
+    this.setPieceToSquare(pieces["pawn"], player, this.board[next][position]);
+  }
+
+  setPiecesForPlayer(player) {
+    specialRow.map((piece, id) => this.setSpecialAndPawn(player, piece, id));
   }
 
   setPiecesToInitialPosition() {
-    // set player 1 pieces
-    specialRow.map((specialPiece, id) => {
-      this.setSpecialAndPawn(1, specialPiece, id);
-    });
-    // set player 2 pieces
-    specialRow.reverse().map((specialPiece, id) => {
-      this.setSpecialAndPawn(2, specialPiece, id);
-    });
+    this.setPiecesForPlayer(1);
+    this.setPiecesForPlayer(2);
   }
 }
 

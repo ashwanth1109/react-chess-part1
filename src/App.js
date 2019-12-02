@@ -1,15 +1,11 @@
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import React, { useState, useCallback } from "react";
 import { AppContainer, ChessBoard, Row, NewGameButton, Square } from "./styles";
 import Game from "./classes/Game";
 
 export default () => {
   const [game, setGame] = useState(new Game());
-
-  const startNewGame = useCallback(() => {
-    setGame(new Game());
-  }, []);
 
   return (
     <AppContainer>

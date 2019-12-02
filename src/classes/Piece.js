@@ -1,9 +1,7 @@
 class Piece {
-  constructor(piece, player, square) {
-    this.symbol = piece.symbol;
-    this.name = piece.name;
+  constructor(symbol, player) {
+    this.symbol = symbol;
     this.player = player;
-    this.square = square;
   }
 }
 
